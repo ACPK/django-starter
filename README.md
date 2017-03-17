@@ -14,9 +14,9 @@ Specifics
 Structure
 ---------
 
-- `apps/` All Django apps exist here.
-- `libs/` All custom Python libraries (not specific to an app) exist here.
-- `project/settings/` All Django settings exist here.
+- `apps/` All Django apps exist here
+- `libs/` All custom Python libraries (not specific to an app) exist here
+- `project/settings/` All Django settings exist here
 - `project/settings/common.py` Common settings across all environments
 - `project/settings/local.py` Local (development) specific settings
 - `project/settings/production.py` Product (Heroku) specific settings
