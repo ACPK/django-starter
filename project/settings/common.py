@@ -18,6 +18,7 @@ DEBUG = False
 ALLOWED_HOSTS = []
 ROOT_URLCONF = 'project.urls'
 WSGI_APPLICATION = 'project.wsgi.application'
+APPEND_SLASH = False
 
 INSTALLED_APPS = [
     # Django

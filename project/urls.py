@@ -6,8 +6,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.blog'))
+    url(r'^admin', admin.site.urls),
+    url(r'^', include('apps.blog.urls'))
 ]
 
 # Serve statics/media locally when in development mode

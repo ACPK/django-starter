@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def posts(request):
+    render('blog/posts.html')
+
+
+def post(request, slug):
+    render('blog/post.html')
