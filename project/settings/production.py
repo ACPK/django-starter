@@ -30,3 +30,10 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 # May need these for newer S3 regions
 # AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
 # AWS_S3_SIGNATURE_VERSION = os.envi.get('AWS_S3_SIGNATURE_VERSION')
+
+# ===== Celery and AMQP
+BROKER_URL = os.environ.get('AMQP_URL')
+# # Producers
+# RABBITMQ_BIGWIG_RX_URL = os.environ.get('RABBITMQ_BIGWIG_RX_URL')
+# # Consumers
+# RABBITMQ_BIGWIG_TX_URL = os.environ.get('RABBITMQ_BIGWIG_TX_URL')

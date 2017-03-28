@@ -114,3 +114,43 @@ $ heroku run python manage.py migrate
 ```
 $ heroku run python manage.py createsuperuser
 ```
+
+
+Celery
+------
+
+##### Message Broker
+```
+pip install celery
+brew update
+brew install rabbitmq
+```
+
+##### Run RabbitMQ Servers
+```
+/usr/local/sbin/rabbitmq-server
+```
+
+##### Stopping RabbitMQ Servers
+```
+rabbitmqctl stop
+```
+
+##### Run RabbitMQ with PATH set
+`export PATH=$PATH:/usr/local/sbin` add to ~/.bash_profile or ~/.profile 
+`rabbitmq-server` run the server using a window
+`rabbitmq-server -detached` run the server in the background
+
+##### Creating a new rabbitmq user
+`'amqp://guest:guest@localhost:5672//'` default broker_url
+```
+rabbitmqctl add_user myuser mypassword
+rabbitmqctl add_vhost myvhost
+rabbitmqctl set_user_tags myuser mytag
+rabbitmqctl set_permissions -p myvhost myuser "".*" ".*" ".*"
+```
+
+##### Running Celery Locally
+```
+celery --app=project.settings.celery.app worker --loglevel=INFO
+```

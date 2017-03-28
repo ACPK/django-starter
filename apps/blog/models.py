@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from .tasks import new_blog_body_text
 
 
 class Post(models.Model):
@@ -25,6 +26,7 @@ class Post(models.Model):
         # Force validation on model save
         self.full_clean()
         super().save(*args, **kwargs)
+        new_blog_body_text.delay(self.id)
 
 
 class Comment(models.Model):
