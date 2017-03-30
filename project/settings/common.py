@@ -115,6 +115,7 @@ LOGGING = {
         'libs': {
             'handlers': ['console'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+            'propagate': False
         },
         'project': {
             'handlers': ['console'],

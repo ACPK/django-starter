@@ -2,6 +2,13 @@ from django.contrib.auth.models import User
 from django.db import models
 from .tasks import new_blog_body_text
 
+import logging
+
+logger = logging.getLogger(__name__)
+
+def models_logger():
+    return logger.debug("# ==== Calling: Models Logger ==== #")
+
 
 class Post(models.Model):
     DRAFT = 'draft'
@@ -42,3 +49,4 @@ class Comment(models.Model):
         # Force validation on model save
         self.full_clean()
         super().save(*args, **kwargs)
+        models_logger()

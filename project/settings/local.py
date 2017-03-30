@@ -8,9 +8,9 @@ SECRET_KEY = 'supersecret'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres'
+        'NAME': 'django-starter',
+        'USER': 'root',
+        'PASSWORD': 'password'
     }
 }
 
