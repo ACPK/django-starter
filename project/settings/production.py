@@ -33,7 +33,3 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 # ===== Celery and AMQP
 BROKER_URL = os.environ.get('AMQP_URL')
-# # Producers
-# RABBITMQ_BIGWIG_RX_URL = os.environ.get('RABBITMQ_BIGWIG_RX_URL')
-# # Consumers
-# RABBITMQ_BIGWIG_TX_URL = os.environ.get('RABBITMQ_BIGWIG_TX_URL')

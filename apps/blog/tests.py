@@ -4,9 +4,11 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.test import TestCase, Client
 from django.urls import reverse
+from django.test.utils import override_settings
 
 from .factory import AuthorFactory, PostFactory, CommentFactory
 from .models import Post, Comment
+from .tasks import new_blog_body_text
 
 
 class PostTestCase(TestCase):
@@ -64,3 +66,11 @@ class RequestTestCase(TestCase):
         self.assertTemplateUsed(response, 'blog/post.html')
         self.assertContains(response, post.title)
         self.assertContains(response, post.body)
+        
+
+class CeleryWorkerTestCase(TestCase):
+    @override_settings(CELERY_ALWAYS_EAGER=True, BROKER_BACKEND='memory')
+    def test_new_blog_body_text(self):
+        post = PostFactory.create()
+        result = new_blog_body_text.delay(post.pk)
+        self.assertTrue(result.successful())
