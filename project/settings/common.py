@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'storages',
 
     # Internal
-    'apps.blog'
+    'apps.blog',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +115,7 @@ LOGGING = {
         'libs': {
             'handlers': ['console'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+            'propagate': False
         },
         'project': {
             'handlers': ['console'],
@@ -126,3 +127,16 @@ LOGGING = {
         },
     },
 }
+
+# ===== Celery and AMQP
+BROKER_POOL_LIMIT = 1 # Will decrease connection usage
+BROKER_CONNECTION_MAX_RETRIES = None
+BROKER_HEARTBEAT = None # We're using TCP keep-alive instead
+BROKER_CONNECTION_TIMEOUT = 30 # May require a long timeout due to Linux DNS timeouts etc
+
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_RESULT_BACKEND = None # AMQP is not recommended as result backend as it creates thousands of queues
+CELERY_SEND_EVENTS = False # Will not create celeryev.* queues
+CELERY_EVENT_QUEUE_EXPIRES = 60 # Will delete all celeryev. queues without consumers after 1 minute.
